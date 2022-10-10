@@ -1,0 +1,44 @@
+.container {
+  width: 100%;
+  height: 50vh;
+  margin: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  background-image: url('../assets/images/gears.svg');
+}
+
+.container h1 {
+  margin-left: 50px;
+  margin-top: 60px;
+
+  font-weight: 700;
+  font-size: 10vh;
+  line-height: 54px;
+
+  color: white;
+}
+.container h2 {
+  margin-left: 50px;
+
+  font-weight: 400;
+  font-size: 5vh;
+  line-height: 38px;
+
+  opacity: 0.8;
+  color: white;
+}
+
+@media only screen and (max-width: 480px) {
+  .container h1 {
+    margin: 50px 0 0 4vw;
+    font-size: 8vh;
+    min-width: 0px;
+  }
+
+  .container h2 {
+    margin: 1vh 0 0 4vw;
+    font-size: 4vh;
+  }
+}

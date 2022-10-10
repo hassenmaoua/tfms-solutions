@@ -1,0 +1,93 @@
+.Link:hover {
+  transform: none;
+}
+
+.container {
+  width: 18vw;
+  height: 12vw;
+
+  min-width: 240px;
+  min-height: 160px;
+
+  margin: 4vh 2vw 0 2vh;
+
+  --transition-in: all 0.2s ease-in-out;
+  --transition-out: all 0.3s ease-in-out;
+}
+
+.container :hover {
+  cursor: pointer;
+}
+
+.container:hover .rectangle {
+  border: 5px solid #7ea310;
+  transform: scale(1.1);
+  transition: var(--transition-in);
+}
+
+.container:hover .button {
+  background-color: #7ea310;
+  transform: scale(1.1);
+  top: -5%;
+  transition: var(--transition-in);
+}
+
+.container:hover .icon {
+  color: #7ea310;
+  transition: var(--transition-in);
+}
+
+.rectangle {
+  width: 100%;
+  height: 90%;
+  border: 5px solid #20525c;
+  border-radius: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: var(--transition-out);
+}
+
+.icon {
+  height: 50%;
+  width: 50%;
+  color: #20525c;
+
+  transition: var(--transition-out);
+}
+
+.button {
+  width: 80%;
+  height: 20%;
+
+  position: relative;
+  top: -10%;
+  left: 10%;
+  background: #20525c;
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: var(--transition-out);
+}
+
+.button p {
+  font-weight: 700;
+  font-size: 100%;
+  letter-spacing: 0.08em;
+
+  padding: 0;
+  margin: 0;
+
+  color: #ffffff;
+}
+
+@media only screen and (max-width: 480px) {
+  .container {
+    margin: 5vh 0 0 0;
+  }
+}

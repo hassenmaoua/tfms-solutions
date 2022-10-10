@@ -1,0 +1,153 @@
+* {
+  --width: 70vw;
+  --height: 70vh;
+}
+span,
+div {
+  cursor: default;
+}
+
+.main {
+  width: var(--width);
+  height: var(--height);
+
+  min-height: 460px;
+  min-width: 1000px;
+
+  position: absolute;
+  left: calc(50% - var(--width) / 2);
+  top: calc(52% - var(--height) / 2);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.container {
+  width: 100%;
+  height: 90%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  background: #ffffff;
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.25);
+}
+
+.header {
+  width: 100%;
+  height: 20%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header .left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.intitule {
+  color: #213502;
+  font-weight: 700;
+  font-size: 32px;
+
+  margin: 0 60px;
+}
+
+.icon {
+  color: #213502;
+
+  margin: 0 20px;
+  width: 24px;
+  height: 24px;
+}
+.icon:hover {
+  color: #7ea310;
+  cursor: pointer;
+}
+
+.body {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer {
+  width: 100%;
+  height: 10%;
+
+  display: flex;
+  justify-content: flex-end;
+}
+.footer button {
+  margin: 10px 0 0 20px;
+  padding: 5px 15px 5px 0px;
+}
+
+.footer button:hover {
+  cursor: pointer;
+}
+
+.right {
+  border-left: #7f848c solid 1px;
+}
+
+.left,
+.right {
+  height: 90%;
+  width: 50%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+
+  padding: 30px;
+  padding-top: 0;
+}
+
+.row {
+  width: 100%;
+  margin-right: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.rowHeader {
+  color: #7f848c;
+
+  height: 30px;
+  display: flex;
+  align-items: center;
+
+  font-weight: 700;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.rowData {
+  color: #213502;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.save {
+  position: relative;
+  top: 10px;
+  left: 330px;
+  color: #213502;
+}
+.save:hover {
+  cursor: pointer;
+  color: #7ea310;
+}

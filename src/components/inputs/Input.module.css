@@ -1,0 +1,62 @@
+.textControl {
+  width: 280px;
+  height: 61px;
+  margin-bottom: 10px;
+}
+
+.textControl label {
+  display: block;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  margin-left: 5px;
+
+  color: #213502;
+}
+
+.textControl input {
+  display: block;
+  width: 280px;
+  height: 40px;
+  background: #f8f8f8;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  padding: 0 10px;
+  outline: none;
+
+  transition: all 0.1s ease-in-out;
+
+  font-size: 16px;
+  color: #213502;
+}
+
+.textControl input:hover,
+.textControl input:focus {
+  border: 2px solid #7ea310;
+  transition: all 0.2s ease-in-out;
+}
+
+.checkboxControl {
+  width: 280px;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+
+.ccheckboxControl label {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  margin-left: 5px;
+
+  color: #213502;
+}
+
+.checkboxControl input {
+  width: 16px;
+  height: 16px;
+  accent-color: #213502;
+}

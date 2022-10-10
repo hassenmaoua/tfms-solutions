@@ -1,0 +1,31 @@
+.btn {
+  width: 200px;
+  height: 30px;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #7f8484;
+  border: none;
+  border-radius: 5px;
+  transition: all 0.5s ease-in-out;
+}
+
+.btn:hover {
+  transition: all 0.2s ease-in-out;
+}
+
+.login {
+  width: 280px;
+  height: 50px;
+  font-size: 24px;
+  line-height: 29px;
+  align-items: center;
+  text-align: center;
+  background-color: #7ea310;
+  border-radius: 5px;
+
+  margin: 30px 0;
+}
+
+.login:hover {
+  background: #213502;
+}

@@ -1,0 +1,29 @@
+.container {
+  width: 100%;
+  height: 15vh;
+
+  padding: 5vh;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.radio {
+  accent-color: #449d44;
+  color: #213502;
+  width: 55vw;
+}
+
+@media only screen and (max-width: 500px) {
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+    height: 130px;
+    padding: 0 20px;
+    margin: 50px 0;
+  }
+  .radio {
+    width: 100%;
+  }
+}
