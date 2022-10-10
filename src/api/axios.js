@@ -9,6 +9,7 @@ export default axios.create({
   headers: {
     'Access-Control-Allow-Origin': '*',
     'Content-Type': 'application/json',
+    Accept: '*/*',
   },
 });
 
@@ -18,7 +19,6 @@ export const axiosPrivate = axios.create({
   credentials: 'include',
   headers: {
     'Access-Control-Allow-Origin': '*',
-
     'Content-Type': 'application/json',
   },
 });

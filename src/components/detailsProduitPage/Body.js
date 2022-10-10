@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import State from '../ui/State';
 import Description from './Description';
 
-const responsable = 'http://192.168.1.9/public/profile_picture.jpg';
+const responsable = 'https://lwm-api.herokuapp.com/public/profile_picture.jpg';
 
 function Body(props) {
   const navigate = useNavigate();
