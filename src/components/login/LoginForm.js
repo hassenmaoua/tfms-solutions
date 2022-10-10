@@ -6,7 +6,7 @@ import Input from '../inputs/Input';
 import { useRef, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
-import axios from '../../api/axios';
+import axios from 'axios';
 
 function LoginForm() {
   const { setAuth } = useAuth();
@@ -29,7 +29,12 @@ function LoginForm() {
     const body = JSON.stringify({ email: user, password: password });
 
     try {
-      const response = await axios.post('/login', body);
+      const response = await axios.post('https://lwm-api.herokuapp.com/api/login', body,
+  
+      headers: {
+    'Access-Control-Allow-Origin': '*',
+    'Content-Type': 'application/json',
+  });
       console.log(response?.data?.message);
 
       const isConnected = response.data.status;
@@ -45,13 +50,6 @@ function LoginForm() {
 
       navigate('/home', { replace: true });
     } catch (err) {
-      if (
-        err.response?.status === 400 ||
-        err.response?.status === 404 ||
-        err.response?.status === 500
-      ) {
-        setError(err.response.data.message);
-      } else {
         setError(err.message);
         console.log(err.message);
         console.log(err.type);
