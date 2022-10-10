@@ -53,6 +53,10 @@ function LoginForm() {
         setError(err.response.data.message);
       } else {
         setError(err.message);
+        console.log(err.message);
+        console.log(err.type);
+        console.log(err.arguments);
+        console.log(err.stack);
       }
     }
   }
