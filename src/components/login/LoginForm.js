@@ -29,12 +29,16 @@ function LoginForm() {
     const body = JSON.stringify({ email: user, password: password });
 
     try {
-      const response = await axios.post('https://lwm-api.herokuapp.com/api/login', body,
-  
-      headers: {
-    'Access-Control-Allow-Origin': '*',
-    'Content-Type': 'application/json',
-  });
+      const response = await axios.post(
+        'https://lwm-api.herokuapp.com/api/login',
+        body,
+        {
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json',
+          },
+        }
+      );
       console.log(response?.data?.message);
 
       const isConnected = response.data.status;
@@ -50,14 +54,14 @@ function LoginForm() {
 
       navigate('/home', { replace: true });
     } catch (err) {
-        setError(err.message);
-        console.log(err.message);
-        console.log(err.type);
-        console.log(err.arguments);
-        console.log(err.stack);
-      }
+      setError(err.message);
+      console.log(err.message);
+      console.log(err.type);
+      console.log(err.arguments);
+      console.log(err.stack);
     }
   }
+
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <img src={LOGO} alt='Logo'></img>
