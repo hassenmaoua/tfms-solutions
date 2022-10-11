@@ -1,4 +1,4 @@
-import styles from './NewClientForm.module.css';
+import styles from './Form.module.css';
 import Modal from '../ui/Modal';
 import { useRef, useState } from 'react';
 import PictureUploader from '../ui/PictureUploader ';
@@ -67,7 +67,7 @@ function NewClientForm(props) {
 
   return (
     <Modal
-      height='350px'
+      height='360px'
       onSubmit={submitHandler}
       title='Ajouter nouveau Client'
       onClose={closeHandler}

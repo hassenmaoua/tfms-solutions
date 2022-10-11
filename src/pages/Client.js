@@ -5,6 +5,7 @@ import BodyList from '../components/clientPage/BodyList';
 import NewClientForm from '../components/clientPage/NewClientForm';
 import useAxiosPrivate from '../hooks/useAxiosPrivate';
 import ModifyClientForm from '../components/clientPage/ModifyClientForm';
+import Spinner from '../components/layout/Spinner';
 
 function Client() {
   const axiosPrivate = useAxiosPrivate();
@@ -88,42 +89,42 @@ function Client() {
     setClient(client);
     setIsModifyOpen(true);
   }
-
-  if (response)
-    return (
-      <Layout>
-        <Header
-          onButtonClick={() => {
-            setIsFormOpen(true);
-          }}
-        />
+  return (
+    <Layout>
+      <Header
+        onButtonClick={() => {
+          setIsFormOpen(true);
+        }}
+      />
+      {response ? (
         <BodyList
           response={response}
           onDelete={deleteHandler}
           onEdit={editHandler}
         />
+      ) : (
+        <Spinner />
+      )}
+      {isFormOpen && (
+        <NewClientForm
+          onSubmit={submitHandler}
+          onClose={() => {
+            setIsFormOpen(false);
+          }}
+        />
+      )}
 
-        {isFormOpen && (
-          <NewClientForm
-            onSubmit={submitHandler}
-            onClose={() => {
-              setIsFormOpen(false);
-            }}
-          />
-        )}
-
-        {isModifyOpen && (
-          <ModifyClientForm
-            client={client}
-            onSubmit={updateSubmitHandler}
-            onClose={() => {
-              setIsModifyOpen(false);
-            }}
-          />
-        )}
-      </Layout>
-    );
-  else return <h1>Loading...</h1>;
+      {isModifyOpen && (
+        <ModifyClientForm
+          client={client}
+          onSubmit={updateSubmitHandler}
+          onClose={() => {
+            setIsModifyOpen(false);
+          }}
+        />
+      )}
+    </Layout>
+  );
 }
 
 export default Client;

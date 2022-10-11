@@ -8,6 +8,7 @@ import Facture from './pages/Facture';
 import Root from './pages/Root';
 import DetailsProduit from './pages/DetailsProduit';
 import ModifierProduit from './pages/ModifierProduit';
+import NotFound from './pages/NotFound';
 import RequireAuth from './components/RequireAuth';
 import PresistLogin from './components/PresistLogin';
 
@@ -26,9 +27,9 @@ function App() {
           <Route path='/produit/:id' element={<DetailsProduit />} />
           <Route path='/produit/modifier/:id' element={<ModifierProduit />} />
         </Route>
-      </Route>
 
-      <Route path='*' element={<h1>404 :P</h1>} />
+        <Route path='/*' element={<NotFound />} />
+      </Route>
     </Routes>
   );
 }

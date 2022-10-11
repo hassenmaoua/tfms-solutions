@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Layout from '../components/layout/Layout';
 import Body from '../components/ModifierProduitPage/Body';
 import useAxiosPrivate from '../hooks/useAxiosPrivate';
+import Spinner from '../components/layout/Spinner';
 
 function ModifierProduit() {
   const axiosPrivate = useAxiosPrivate();
@@ -27,13 +28,9 @@ function ModifierProduit() {
     fetchProduit();
   }, [axiosPrivate, params.id]);
 
-  if (respone.status)
-    return (
-      <Layout>
-        <Body respone={respone}> </Body>
-      </Layout>
-    );
-  else return <h1>{respone.message}</h1>;
+  return (
+    <Layout>{respone ? <Body respone={respone}> </Body> : <Spinner />}</Layout>
+  );
 }
 
 export default ModifierProduit;

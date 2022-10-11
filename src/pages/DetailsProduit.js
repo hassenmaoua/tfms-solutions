@@ -3,6 +3,7 @@ import Layout from '../components/layout/Layout';
 import Body from '../components/detailsProduitPage/Body';
 import useAxiosPrivate from '../hooks/useAxiosPrivate';
 import { useNavigate, useParams } from 'react-router-dom';
+import Spinner from '../components/layout/Spinner';
 
 function DetailsProduit() {
   const axiosPrivate = useAxiosPrivate();
@@ -45,17 +46,19 @@ function DetailsProduit() {
     }
   }
 
-  if (response)
-    return (
-      <Layout>
+  return (
+    <Layout>
+      {response ? (
         <Body
           response={response}
           onEdit={editHandler}
           onDelete={deleteHandler}
         />
-      </Layout>
-    );
-  else return <h1>Loading...</h1>;
+      ) : (
+        <Spinner />
+      )}
+    </Layout>
+  );
 }
 
 export default DetailsProduit;

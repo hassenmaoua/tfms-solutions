@@ -10,6 +10,7 @@ import './Antd.css';
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 import moment from 'moment';
 import { useParams } from 'react-router-dom';
+import Spinner from '../layout/Spinner';
 
 const { Option } = Select;
 
@@ -388,7 +389,12 @@ function Body(props) {
         </div>
       </form>
     );
-  else return <h1>Loading ... </h1>;
+  else
+    return (
+      <>
+        <Spinner />
+      </>
+    );
 }
 
 export default Body;

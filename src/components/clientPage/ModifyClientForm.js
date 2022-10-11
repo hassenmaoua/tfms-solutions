@@ -1,4 +1,4 @@
-import styles from './NewClientForm.module.css';
+import styles from './Form.module.css';
 import Modal from '../ui/Modal';
 import PictureUploader from '../ui/PictureUploader ';
 import CurrencyFormat from 'react-currency-format';
@@ -85,7 +85,7 @@ function ModifyClientForm(props) {
 
   return (
     <Modal
-      height='350px'
+      height='360px'
       onSubmit={submitHandler}
       title='Modifier Client'
       onClose={closeHandler}

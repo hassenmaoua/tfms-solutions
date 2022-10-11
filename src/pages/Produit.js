@@ -4,6 +4,7 @@ import Header from '../components/produitPage/Header';
 import BodyList from '../components/produitPage/BodyList';
 import NewProduitForm from '../components/produitPage/NewProduitForm';
 import useAxiosPrivate from '../hooks/useAxiosPrivate';
+import Spinner from '../components/layout/Spinner';
 
 function Produit() {
   const axiosPrivate = useAxiosPrivate();
@@ -66,27 +67,29 @@ function Produit() {
       console.log(err.message);
     }
   }
-  if (response)
-    return (
-      <Layout>
-        <Header
-          onButtonClick={() => {
-            setIsFormOpen(true);
+
+  return (
+    <Layout>
+      <Header
+        onButtonClick={() => {
+          setIsFormOpen(true);
+        }}
+      />
+      {response ? (
+        <BodyList response={response} onDelete={deleteHandler} />
+      ) : (
+        <Spinner />
+      )}
+      {isFormOpen && (
+        <NewProduitForm
+          onSubmit={submitHandler}
+          onClose={() => {
+            setIsFormOpen(false);
           }}
         />
-        <BodyList response={response} onDelete={deleteHandler} />
-
-        {isFormOpen && (
-          <NewProduitForm
-            onSubmit={submitHandler}
-            onClose={() => {
-              setIsFormOpen(false);
-            }}
-          />
-        )}
-      </Layout>
-    );
-  else return <h1>Loading...</h1>;
+      )}
+    </Layout>
+  );
 }
 
 export default Produit;

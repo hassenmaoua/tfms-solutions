@@ -10,7 +10,16 @@
 }
 
 .radio {
-  accent-color: #449d44;
+  accent-color: #213502;
   color: #213502;
-  width: 50vw;
+  width: 55vw;
+  display: flex;
+}
+
+.radio input {
+  margin: 0 2px 0 10px;
+}
+
+.radio input:hover {
+  cursor: pointer;
 }

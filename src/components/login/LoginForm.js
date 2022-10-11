@@ -6,7 +6,8 @@ import Input from '../inputs/Input';
 import { useRef, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
-import axios from 'axios';
+import axios from '../../api/axios';
+import { Link } from 'react-router-dom';
 
 function LoginForm() {
   const { setAuth } = useAuth();
@@ -29,16 +30,7 @@ function LoginForm() {
     const body = JSON.stringify({ email: user, password: password });
 
     try {
-      const response = await axios.post(
-        'https://lwm-api.herokuapp.com/api/login',
-        body,
-        {
-          headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Content-Type': 'application/json',
-          },
-        }
-      );
+      const response = await axios.post('/login', body);
       console.log(response?.data?.message);
 
       const isConnected = response.data.status;
@@ -92,7 +84,7 @@ function LoginForm() {
 
       <Button x={'login'}>Login</Button>
 
-      <a href='http://localhost:80/home'>Mot de passe Oublier?</a>
+      <Link to='/forgot'>Mot de passe Oublier?</Link>
     </form>
   );
 }
