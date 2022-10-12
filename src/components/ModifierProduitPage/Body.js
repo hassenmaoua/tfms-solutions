@@ -286,7 +286,6 @@ function Body(props) {
                     showSearch
                     placeholder='Choisir un client'
                     optionFilterProp='children'
-                    defaultValue={'Aucun Client'}
                     value={client}
                     onChange={onClientChange}
                     filterOption={(input, option) =>

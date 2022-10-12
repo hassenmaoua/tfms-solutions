@@ -4,19 +4,19 @@ import styles from './Menu.module.css';
 export const MenuData = [
   {
     title: 'Paramètres du compte',
-    path: '/home',
+    path: '/settings',
     icon: <FcSettings />,
     cName: styles.text,
   },
   {
     title: 'Configurations',
-    path: '/home',
+    path: '/configuration',
     icon: <FcServices />,
     cName: styles.text,
   },
   {
     title: 'À propos du site',
-    path: '/home',
+    path: '/about',
     icon: <FcAbout />,
     cName: styles.text,
   },

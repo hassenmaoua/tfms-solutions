@@ -1,13 +1,15 @@
 import PulseLoader from 'react-spinners/PulseLoader';
 
 const container = {
+  height: 50,
+  zIndex: 2,
   position: 'absolute',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
 
-  left: 'calc(50% - 20px / 2)',
+  left: 'calc(50% - 90px / 2)',
   top: 'calc(50% - 20px / 2)',
 };
 

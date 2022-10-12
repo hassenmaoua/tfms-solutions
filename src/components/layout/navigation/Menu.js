@@ -45,6 +45,7 @@ function Menu() {
 
   async function logoutHandler() {
     await logout();
+    localStorage.clear();
     console.log('Deconnecter');
     navigate('/login');
   }

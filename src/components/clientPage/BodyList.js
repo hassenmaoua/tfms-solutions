@@ -5,11 +5,36 @@ function BodyList(props) {
   const response = props.response;
   const data = response.data;
 
+  const filteredData = data.filter((client) => {
+    if (props.filterRadio === 'individuelle' && client.isIndividual) {
+      console.log(props.filterRadio, client.isIndividual);
+      if (props.filterInput === '') {
+        return client;
+      } else {
+        return client.intitule.toLowerCase().includes(props.filterInput);
+      }
+    } else if (props.filterRadio === 'societe' && !client.isIndividual) {
+      console.log(props.filterRadio, client.isIndividual);
+      if (props.filterInput === '') {
+        return client;
+      } else {
+        return client.intitule.toLowerCase().includes(props.filterInput);
+      }
+    } else if (props.filterRadio === 'tout') {
+      console.log(props.filterRadio, client.isIndividual);
+      if (props.filterInput === '') {
+        return client;
+      } else {
+        return client.intitule.toLowerCase().includes(props.filterInput);
+      }
+    }
+  });
+
   if (response.status)
     return (
       <div className={styles.container}>
-        {data.length ? (
-          data.map((item, index) => {
+        {filteredData.length ? (
+          filteredData.map((item, index) => {
             return (
               <Card
                 key={index}

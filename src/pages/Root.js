@@ -1,8 +1,16 @@
 import React from 'react';
-import RootContent from '../components/RootContent';
+import Body from '../components/rootPage/Body';
+import Header from '../components/rootPage/Header';
+import Footer from '../components/rootPage/Footer';
 
 function Root() {
-  return <RootContent />;
+  return (
+    <>
+      <Header />
+      <Body />
+      <Footer />
+    </>
+  );
 }
 
 export default Root;

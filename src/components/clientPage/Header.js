@@ -4,19 +4,18 @@ import SearchQuery from '../inputs/SearchQuery';
 import { IoIosAddCircle } from 'react-icons/io';
 import { FaSearch } from 'react-icons/fa';
 
-import { useState } from 'react';
-
 function Header(props) {
-  const [state, setState] = useState('tout');
-
-  function onStateChanged(event) {
-    setState(event.currentTarget.value);
-  }
+  const state = props.filter;
+  const filterHandler = props.onFilter;
 
   return (
     <div className={styles.container}>
       <div>
-        <SearchQuery placeholder={'Rechercher un Client'} icon={FaSearch} />
+        <SearchQuery
+          placeholder={'Rechercher un Client'}
+          icon={FaSearch}
+          onSearch={props.onSearch}
+        />
       </div>
       <div>
         <div className={styles.radio}>
@@ -25,23 +24,23 @@ function Header(props) {
             name='type'
             value='tout'
             checked={state === 'tout'}
-            onChange={onStateChanged}
+            onChange={filterHandler}
           />{' '}
           Tout
           <input
             type='radio'
-            value='individuelle'
             name='type'
+            value='individuelle'
             checked={state === 'individuelle'}
-            onChange={onStateChanged}
+            onChange={filterHandler}
           />{' '}
           Individuelle
           <input
             type='radio'
-            value='societé'
             name='type'
-            checked={state === 'societé'}
-            onChange={onStateChanged}
+            value='societe'
+            checked={state === 'societe'}
+            onChange={filterHandler}
           />{' '}
           Societé
         </div>

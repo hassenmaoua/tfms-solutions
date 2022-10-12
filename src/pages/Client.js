@@ -89,9 +89,25 @@ function Client() {
     setClient(client);
     setIsModifyOpen(true);
   }
+
+  const [inputText, setInputText] = useState('');
+  let searchInputHandler = (e) => {
+    var lowerCase = e.target.value.toLowerCase();
+    console.log(lowerCase);
+    setInputText(lowerCase);
+  };
+
+  const [filter, setFilter] = useState('tout');
+  let filterHandler = (e) => {
+    setFilter(e.target.value);
+  };
+
   return (
     <Layout>
       <Header
+        onSearch={searchInputHandler}
+        onFilter={filterHandler}
+        filter={filter}
         onButtonClick={() => {
           setIsFormOpen(true);
         }}
@@ -101,6 +117,8 @@ function Client() {
           response={response}
           onDelete={deleteHandler}
           onEdit={editHandler}
+          filterInput={inputText}
+          filterRadio={filter}
         />
       ) : (
         <Spinner />

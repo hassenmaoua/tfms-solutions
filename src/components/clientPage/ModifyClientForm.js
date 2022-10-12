@@ -60,7 +60,7 @@ function ModifyClientForm(props) {
 
   const [photo, setPhoto] = useState('');
 
-  const [oldPhoto, setOldPhoto] = useState(data.photo);
+  const [oldPhoto] = useState(data.photo);
 
   const [phone, setPhone] = useState(data.phone);
 

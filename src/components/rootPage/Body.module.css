@@ -1,0 +1,63 @@
+.container {
+  display: grid;
+  grid-template-columns: 380px 380px 380px;
+  grid-template-rows: 220px 220px;
+  gap: 40px;
+  grid-auto-flow: row;
+  justify-content: center;
+  padding: 50px;
+}
+
+.container h2 {
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: white;
+}
+
+.container p {
+  color: white;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.descriptionContainer h2 {
+  color: #7ea310;
+}
+.descriptionContainer p {
+  color: gray;
+  font-size: 14px;
+}
+
+.factureContainer,
+.produitContainer,
+.clientContainer,
+.descriptionContainer {
+  padding: 20px 10px;
+}
+.factureContainer {
+  background: linear-gradient(rgba(39, 51, 3, 0.5), rgba(39, 51, 3, 0.5)),
+    url('../assets/images/image001.jpg');
+  background-size: cover;
+}
+
+.produitContainer {
+  background: linear-gradient(rgba(39, 51, 3, 0.5), rgba(39, 51, 3, 0.5)),
+    url('../assets/images/image002.jpg');
+  background-size: cover;
+}
+
+.clientContainer {
+  background: linear-gradient(rgba(39, 51, 3, 0.5), rgba(39, 51, 3, 0.5)),
+    url('../assets/images/image003.jpg');
+  background-size: cover;
+}
+
+.descriptionContainer {
+  grid-column: 1 / span 2;
+}
+
+.imageContainer {
+  background-image: url('../assets/images/worker.jpg');
+  background-size: cover;
+}

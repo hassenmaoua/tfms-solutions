@@ -7,7 +7,7 @@
   justify-content: space-around;
   align-items: center;
 
-  padding: 0 15vw;
+  padding: 5vh 3vw;
 }
 
 @media only screen and (max-width: 480px) {

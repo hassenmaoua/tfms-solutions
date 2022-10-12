@@ -8,7 +8,11 @@ function Header(props) {
   return (
     <div className={styles.container}>
       <div>
-        <SearchQuery placeholder={'Rechercher un porduit'} icon={FaSearch} />
+        <SearchQuery
+          placeholder={'Rechercher un porduit'}
+          icon={FaSearch}
+          onSearch={props.onSearch}
+        />
       </div>
       <div>
         <IconButton

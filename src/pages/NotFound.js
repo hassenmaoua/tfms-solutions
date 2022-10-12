@@ -30,7 +30,7 @@ function NotFound() {
         essayez d'accéder à <br /> une page qui a été supprimée ou qui n'a
         jamais existé.
       </h5>
-      <Link to='/home'>Retour à la page d'accueil</Link>
+      <Link to='/'>Retour à la page d'accueil</Link>
     </div>
   );
 }

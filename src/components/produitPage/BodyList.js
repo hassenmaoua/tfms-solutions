@@ -6,6 +6,14 @@ function BodyList(props) {
   const response = props.response;
   const data = response.data;
 
+  const filteredData = data.filter((produit) => {
+    if (props.filterInput === '') {
+      return produit;
+    } else {
+      return produit.intitule.toLowerCase().includes(props.filterInput);
+    }
+  });
+
   if (response.status)
     return (
       <div className={styles.container}>
@@ -32,15 +40,15 @@ function BodyList(props) {
             <span>Buget Vente</span>
           </div>
           <div style={{ width: '2%' }}>
-            <span>Quantité</span>
+            <span>Qnt</span>
           </div>
           <div style={{ width: '15%' }}>
             <span>Actions</span>
           </div>
         </div>
 
-        {data.length ? (
-          data.map((item, index) => {
+        {filteredData.length ? (
+          filteredData.map((item, index) => {
             return (
               <RowItem key={index} item={item} onDelete={props.onDelete} />
             );

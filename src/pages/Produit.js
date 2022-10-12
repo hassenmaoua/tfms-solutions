@@ -39,7 +39,6 @@ function Produit() {
           setResponse(err.response.data);
         } else {
           console.log(err.message);
-          //navigate('/login', { state: { from: location }, replace: true });
         }
       }
     }
@@ -68,15 +67,27 @@ function Produit() {
     }
   }
 
+  const [inputText, setInputText] = useState('');
+  let searchInputHandler = (e) => {
+    var lowerCase = e.target.value.toLowerCase();
+    console.log(lowerCase);
+    setInputText(lowerCase);
+  };
+
   return (
     <Layout>
       <Header
+        onSearch={searchInputHandler}
         onButtonClick={() => {
           setIsFormOpen(true);
         }}
       />
       {response ? (
-        <BodyList response={response} onDelete={deleteHandler} />
+        <BodyList
+          response={response}
+          onDelete={deleteHandler}
+          filterInput={inputText}
+        />
       ) : (
         <Spinner />
       )}

@@ -20,6 +20,7 @@
     "react-scripts": "5.0.1",
     "react-select": "^5.4.0",
     "react-spinners": "^0.13.6",
+    "swiper": "^8.4.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
