@@ -61,3 +61,14 @@
   background-image: url('../assets/images/worker.jpg');
   background-size: cover;
 }
+
+@media only screen and (max-width: 480px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+  .descriptionContainer p {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+}

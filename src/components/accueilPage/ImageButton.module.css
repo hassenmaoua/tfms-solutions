@@ -48,4 +48,9 @@
   .container {
     margin: 5vh 0 0 0;
   }
+
+  .container p {
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
 }
