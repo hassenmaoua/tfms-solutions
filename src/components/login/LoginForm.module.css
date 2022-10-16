@@ -20,24 +20,20 @@ body {
 }
 
 .form img {
-  width: 150px;
+  width: auto;
   height: 150px;
   margin-top: 20px;
 }
 
 .form h2 {
   /* Connectez-vous à votre compte */
-
-  width: 320px;
-  height: 60px;
-  margin: 10px 0;
+  width: 100%;
+  margin: 20px 0;
 
   font-family: 'Inter';
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
-  display: flex;
-  align-items: center;
   text-align: center;
 
   color: #4b4c4e;
@@ -47,7 +43,7 @@ body {
   position: absolute;
   color: red;
   font-size: 14px;
-  top: 88%;
+  top: 87%;
 }
 
 a {

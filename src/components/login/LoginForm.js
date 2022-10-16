@@ -70,7 +70,7 @@ function LoginForm() {
       )}
       <form className={styles.form} onSubmit={handleSubmit}>
         <img src={LOGO} alt='Logo'></img>
-        <h2>Connectez-vous à votre compte</h2>
+        <h2>Connectez-vous</h2>
         <h3 className={styles.err}>{error}</h3>
         <Input
           id='email'

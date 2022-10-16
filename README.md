@@ -1,68 +1,79 @@
-# Getting Started with Create React App
+# TFMS Solutions
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project build with
 
-## Available Scripts
+- [![React][react.js]][react-url]
 
-In the project directory, you can run:
+<p align="center">
+  <a href="#about-the-project">About The Project</a> •
+  <a href="#installation">Installation</a> •
+  <a href="#modules">Modules</a> •
+  <a href="#how-to-use">How To Use</a> •
+  <a href="#license">License</a>
+</p>
 
-### `npm start`
+## About The Project
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The project is a enterprise management website developed specifically to manage manufacturing, invoices and customers.
+![picture](picture.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation
 
-### `npm test`
+To clone and run this application, you'll need [Git](https://git-scm.com) and [React.js](https://react-cn.github.io/react/downloads.html) (which comes with [npm](http://npmjs.com)) installed on your computer.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+From your command line:
 
-### `npm run build`
+- Clone this repository
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+git clone https://github.com/hassenmaoua/tfms-solutions
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Go into the repository
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+cd tfms-solutions
+```
 
-### `npm run eject`
+- Install Dependencies and `node_modules`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+npm install
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Modules
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+> `antd` : [Ant Design](https://ant.design/) An enterprise-class UI design language and React UI library with a set of high-quality React components, one of best React UI library for enterprises.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+> `axios` : [Axios](https://axios-http.com/docs/intro) is a promised-based HTTP client for JavaScript. It has the ability to make HTTP requests from the browser and handle the transformation of request and response data.
 
-## Learn More
+> `jquery` : [jQuery](https://jquery.com/) is a JavaScript library designed to simplify HTML DOM tree traversal and manipulation
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+> `react-dom` : [ReactDOM](https://reactjs.org/docs/react-dom.html) is a package that provides DOM specific methods that can be used at the top level of a web app to enable an efficient way of managing DOM elements of the web page.
 
-### Code Splitting
+> `swiper` : [Swiper](https://swiperjs.com/react) is the most modern free mobile touch slider with hardware accelerated transitions and amazing native behavior.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## How To Use
 
-### Analyzing the Bundle Size
+Visit [TFMS Solutions](https://tfms-solutions.vercel.app/)
+If you want local running you may run this simple steps.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+1. When the website is opened, the user is required to authenticate.
 
-### Making a Progressive Web App
+For now Sign Up isn't available, to see demonstration :
+email: `user`
+password: `user`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+2. The user would have access to the manifactures products for which he is responsible, to customers and invoices of his company.
 
-### Advanced Configuration
+3. It is possible to change, add and modify products, clients and invoices.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## License
 
-### Deployment
+Hassen Maoua - Gmail [hassenmaoua07@gmail.com](https://mail.google.com/mail/?view=cm&fs=1&to=hassenmaoua07@gmail.com&su=About+LMW+API)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+> LinkedIn [Hassen Maoua](https://linkedin.com/in/hassen-maoua-215683251) &nbsp;&middot;&nbsp;
+> GitHub [@hassenmaoua](https://github.com/hassenmaoua) &nbsp;&middot;&nbsp;
+> Facebook [@hassen-maoua](https://facebook.com/hassen.maoua)

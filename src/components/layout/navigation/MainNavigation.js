@@ -1,6 +1,6 @@
 import { NavLink, useLocation } from 'react-router-dom';
 import style from './MainNavigation.module.css';
-import LOGO from '../../assets/images/logo_2.svg';
+import LOGO from '../../assets/images/logo_small.png';
 import Menu from './Menu';
 
 function MainNavigation() {

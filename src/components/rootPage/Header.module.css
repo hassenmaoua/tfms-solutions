@@ -1,26 +1,25 @@
 .container {
   height: 80vh;
   background: linear-gradient(rgba(60, 60, 60, 0.5), rgba(60, 60, 60, 0.5)),
-    url('../assets/images/cover.png');
+    url('../assets/images/base/cover.png');
   background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
 }
-.container h1 {
-  font-weight: 700;
-  font-size: 40px;
-  color: white;
-  backdrop-filter: blur(2px);
-  letter-spacing: 4px;
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.2);
-  padding: 10px;
+.imgContainer {
+  padding: 10px 40px;
   width: 100%;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(1px);
+}
+.imgContainer img {
+  width: 400px;
 }
 
 .header {
-  height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;

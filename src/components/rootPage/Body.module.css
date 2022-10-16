@@ -37,19 +37,19 @@
 }
 .factureContainer {
   background: linear-gradient(rgba(39, 51, 3, 0.5), rgba(39, 51, 3, 0.5)),
-    url('../assets/images/image001.jpg');
+    url('../assets/images/base/image001.jpg');
   background-size: cover;
 }
 
 .produitContainer {
   background: linear-gradient(rgba(39, 51, 3, 0.5), rgba(39, 51, 3, 0.5)),
-    url('../assets/images/image002.jpg');
+    url('../assets/images/base/image002.jpg');
   background-size: cover;
 }
 
 .clientContainer {
   background: linear-gradient(rgba(39, 51, 3, 0.5), rgba(39, 51, 3, 0.5)),
-    url('../assets/images/image003.jpg');
+    url('../assets/images/base/image003.jpg');
   background-size: cover;
 }
 
@@ -58,7 +58,7 @@
 }
 
 .imageContainer {
-  background-image: url('../assets/images/worker.jpg');
+  background-image: url('../assets/images/base/worker.jpg');
   background-size: cover;
 }
 

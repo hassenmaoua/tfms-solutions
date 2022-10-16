@@ -27,19 +27,19 @@ function Body() {
       </div>
 
       <div className={styles.descriptionContainer}>
-        <h2>Bienvenue sur le site web de Lathe Mill Workshop</h2>
+        <h2>Bienvenue sur le site web de TFMS Solutions</h2>
         <p>
-          Lathe Mills Workshop est une entreprise jeune, mais en pleine
-          croissance, qui s'efforce d'établir des relations avec les clients et
-          les travailleurs pour assurer une communication ouverte tout au long
-          d'un concessionnaire afin de produire un travail de qualité et
-          rentable. Notre expérience s'étend à travers la Tunisie, complétant de
-          nombreuses pièces de tournage, d'alésage, de perçage et d'alésage avec
-          une implication depuis la phase initiale de conception jusqu'à la
-          certification de la production sur site. nous croyons que la livraison
-          à temps et les délais d'exécution garantis sont une partie impérative
-          de notre activité, et nous nous efforçons de faire en sorte que les
-          attentes de nos travailleurs soient extrêmement bien satisfaites.
+          TFMS Solutions est une entreprise en pleine croissance, qui s'efforce
+          d'établir des relations avec les clients et les travailleurs pour
+          assurer une communication ouverte tout au long d'un concessionnaire
+          afin de produire un travail de qualité et rentable. Notre expérience
+          s'étend à travers la Tunisie, complétant de nombreuses pièces de
+          tournage, d'alésage, de perçage et d'alésage avec une implication
+          depuis la phase initiale de conception jusqu'à la certification de la
+          production sur site. nous croyons que la livraison à temps et les
+          délais d'exécution garantis sont une partie impérative de notre
+          activité, et nous nous efforçons de faire en sorte que les attentes de
+          nos travailleurs soient extrêmement bien satisfaites.
         </p>
       </div>
       <div className={styles.imageContainer}></div>

@@ -8,6 +8,7 @@ import Facture from './pages/Facture';
 import Root from './pages/Root';
 import DetailsProduit from './pages/DetailsProduit';
 import ModifierProduit from './pages/ModifierProduit';
+import FactureForm from './pages/FactureForm';
 import NotFound from './pages/NotFound';
 import RequireAuth from './components/RequireAuth';
 import PresistLogin from './components/PresistLogin';
@@ -26,6 +27,7 @@ function App() {
           <Route path='/facture' element={<Facture />} />
           <Route path='/produit/:id' element={<DetailsProduit />} />
           <Route path='/produit/modifier/:id' element={<ModifierProduit />} />
+          <Route path='/facture/ajouter' element={<FactureForm />} />
         </Route>
 
         <Route path='/*' element={<NotFound />} />

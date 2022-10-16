@@ -4,9 +4,9 @@ import React from 'react';
 import ImageButton from './ImageButton';
 
 import { FaFileInvoiceDollar, FaCogs, FaUserFriends } from 'react-icons/fa';
-import factureImg from '../assets/images/facture.jpg';
-import produitImg from '../assets/images/produit.jpg';
-import clientImg from '../assets/images/client.png';
+import factureImg from '../assets/images/modules/facture.jpg';
+import produitImg from '../assets/images/modules/produit.jpg';
+import clientImg from '../assets/images/modules/client.png';
 
 function ModuleNavigation() {
   return (
