@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import Layout from '../components/layout/Layout';
-import Header from '../components/clientPage/Header';
-import BodyList from '../components/clientPage/BodyList';
-import NewClientForm from '../components/clientPage/NewClientForm';
+import Header from '../components/module/client/Header';
+import BodyList from '../components/module/client/BodyList';
+import NewClientForm from '../components/module/client/NewClientForm';
 import useAxiosPrivate from '../hooks/useAxiosPrivate';
-import ModifyClientForm from '../components/clientPage/ModifyClientForm';
+import ModifyClientForm from '../components/module/client/ModifyClientForm';
 import Spinner from '../components/layout/Spinner';
 
 function Client() {

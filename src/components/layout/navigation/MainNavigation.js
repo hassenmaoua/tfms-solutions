@@ -7,7 +7,7 @@ function MainNavigation() {
   const location = useLocation();
 
   const classNameFunc = ({ isActive }) =>
-    ['/home', '/produit', '/client', '/facture'].includes(location.pathname)
+    ['/home', '/activite', '/client', '/document'].includes(location.pathname)
       ? isActive
         ? style.activeClass
         : ''
@@ -24,14 +24,14 @@ function MainNavigation() {
           <NavLink to='/home' className={classNameFunc}>
             Accueil
           </NavLink>
-          <NavLink to='/produit' className={classNameFunc}>
-            Produit
+          <NavLink to='/activite' className={classNameFunc}>
+            Activité
           </NavLink>
           <NavLink to='/client' className={classNameFunc}>
-            Client
+            Clientèle
           </NavLink>
-          <NavLink to='/facture' className={classNameFunc}>
-            Facture
+          <NavLink to='/document' className={classNameFunc}>
+            Document
           </NavLink>
         </div>
       </nav>

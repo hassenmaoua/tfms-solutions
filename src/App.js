@@ -2,13 +2,13 @@ import Login from './pages/Login';
 import { Routes, Route } from 'react-router-dom';
 
 import Accueil from './pages/Accueil';
-import Produit from './pages/Produit';
+import Activite from './pages/Activite';
 import Client from './pages/Client';
-import Facture from './pages/Facture';
+import Document from './pages/Document';
 import Root from './pages/Root';
-import DetailsProduit from './pages/DetailsProduit';
-import ModifierProduit from './pages/ModifierProduit';
-import FactureForm from './pages/FactureForm';
+import DetailsActivite from './pages/DetailsActivite';
+import ModifierActivite from './pages/ModifierActivite';
+import DocumentForm from './pages/DocumentForm';
 import NotFound from './pages/NotFound';
 import RequireAuth from './components/RequireAuth';
 import PresistLogin from './components/PresistLogin';
@@ -22,12 +22,15 @@ function App() {
       <Route element={<PresistLogin />}>
         <Route element={<RequireAuth />}>
           <Route path='/home' element={<Accueil />} />
-          <Route path='/produit' element={<Produit />} />
+
+          <Route path='/Activite' element={<Activite />} />
+          <Route path='/Activite/:id' element={<DetailsActivite />} />
+          <Route path='/Activite/modifier/:id' element={<ModifierActivite />} />
+
+          <Route path='/document' element={<Document />} />
+          <Route path='/document/ajouter' element={<DocumentForm />} />
+
           <Route path='/client' element={<Client />} />
-          <Route path='/facture' element={<Facture />} />
-          <Route path='/produit/:id' element={<DetailsProduit />} />
-          <Route path='/produit/modifier/:id' element={<ModifierProduit />} />
-          <Route path='/facture/ajouter' element={<FactureForm />} />
         </Route>
 
         <Route path='/*' element={<NotFound />} />
