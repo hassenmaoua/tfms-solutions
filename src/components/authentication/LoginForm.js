@@ -25,7 +25,19 @@ function LoginForm() {
 
   useEffect(() => {
     if (localStorage.getItem('jwt')) {
-      navigate('/home', { replace: true });
+      try {
+        const response = axios.post('/verify', {
+          jwt: localStorage.getItem('jwt'),
+        });
+        if (response.status === 201) {
+          navigate('/home', { replace: true });
+        } else {
+          localStorage.removeItem('jwt');
+          setAuth({ isConnected: false, accessToken: '' });
+        }
+      } catch (err) {
+        console.log(err?.response?.data);
+      }
     }
     setError('');
   }, [user, password, navigate]);

@@ -2,14 +2,12 @@ import React, { useState } from 'react';
 import { uid } from 'uid';
 import { useNavigate } from 'react-router-dom';
 import InvoiceItem from './InvoiceItem';
-import InvoiceModal from './InvoiceModal';
-import incrementString from './incrementString';
+import InvoiceModal from '../InvoiceModal';
 import styles from './InvoiceForm.module.css';
 
 function padTo2Digits(num) {
   return num.toString().padStart(2, '0');
 }
-
 function formatDate(date) {
   return [
     padTo2Digits(date.getDate()),
@@ -17,57 +15,49 @@ function formatDate(date) {
     date.getFullYear(),
   ].join('-');
 }
-
 const date = new Date();
 const today = formatDate(date);
+
+const clientList = [
+  {
+    _id: 0,
+    intitule: 'Client X',
+  },
+  {
+    _id: 1,
+    intitule: 'Client Y',
+  },
+  {
+    _id: 2,
+    intitule: 'Client Z',
+  },
+];
+
+const produitList = [
+  { _id: 0, intitule: 'Produit1', quantite: 5, bugetVente: 100 },
+  { _id: 1, intitule: 'Produit2', quantite: 2, bugetVente: 200 },
+  { _id: 2, intitule: 'Produit3', quantite: 10, bugetVente: 500 },
+];
 
 function InvoiceForm() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
-  const [discount, setDiscount] = useState('');
-  const [tax, setTax] = useState('');
+  const [timber, setTimber] = useState('0.600');
+  const [tax, setTax] = useState('19');
   const [invoiceNumber, setInvoiceNumber] = useState(1);
-  const [cashierName, setCashierName] = useState('Saleh El Behy');
-  const [customerName, setCustomerName] = useState('');
+  const [client, setClient] = useState('');
   const [items, setItems] = useState([
     {
       id: uid(6),
-      name: '',
-      qty: 1,
-      price: '1.00',
+      intitule: '',
+      quantite: 1,
+      bugetVente: '1.00',
     },
   ]);
-
-  const clientList = [
-    {
-      _id: 0,
-      intitule: 'Test',
-    },
-    {
-      _id: 1,
-      intitule: 'Test1',
-    },
-    {
-      _id: 2,
-      intitule: 'Test2',
-    },
-  ];
 
   const reviewInvoiceHandler = (event) => {
     event.preventDefault();
     setIsOpen(true);
-  };
-
-  const addNextInvoiceHandler = () => {
-    setInvoiceNumber((prevNumber) => incrementString(prevNumber));
-    setItems([
-      {
-        id: uid(6),
-        name: '',
-        qty: 1,
-        price: '1.00',
-      },
-    ]);
   };
 
   const addItemHandler = () => {
@@ -75,10 +65,10 @@ function InvoiceForm() {
     setItems((prevItem) => [
       ...prevItem,
       {
-        id: uid(6),
-        name: '',
-        qty: 1,
-        price: '1.00',
+        id: id,
+        intitule: '',
+        quantite: 1,
+        bugetVente: '1.00',
       },
     ]);
   };
@@ -87,8 +77,7 @@ function InvoiceForm() {
     setItems((prevItem) => prevItem.filter((item) => item.id !== id));
   };
 
-  const edtiItemHandler = (event) => {
-    console.log(event.target);
+  const editItemHandler = (event) => {
     const editedItem = {
       id: event.target.id,
       name: event.target.name,
@@ -107,14 +96,31 @@ function InvoiceForm() {
     setItems(newItems);
   };
 
+  const setItemHandler = (event, quantite, bugetVente) => {
+    const editedItem = {
+      id: event.target.id,
+      name: event.target.name,
+      value: event.target.value,
+    };
+
+    const newItems = items.map((item) => {
+      if (item.id === editedItem.id) {
+        item.quantite = quantite;
+        item.bugetVente = bugetVente;
+      }
+      return item;
+    });
+
+    setItems(newItems);
+  };
+
   const subtotal = items.reduce((prev, curr) => {
-    if (curr.name.trim().length > 0)
-      return prev + Number(curr.price * Math.floor(curr.qty));
+    if (curr.intitule.trim().length > 0)
+      return prev + Number(curr.bugetVente * Math.floor(curr.quantite));
     else return prev;
   }, 0);
   const taxRate = (tax * subtotal) / 100;
-  const discountRate = (discount * subtotal) / 100;
-  const total = subtotal - discountRate + taxRate;
+  const total = subtotal + Number(timber) + taxRate;
 
   return (
     <form className={styles.form} onSubmit={reviewInvoiceHandler}>
@@ -132,7 +138,7 @@ function InvoiceForm() {
             }}
           >
             <label style={{ fontWeight: 700 }} htmlFor='invoiceNumber'>
-              N° Facture :
+              N° Document :
             </label>
             <input
               required
@@ -149,25 +155,14 @@ function InvoiceForm() {
         </div>
         <h1>Bon de Livraison</h1>
         <div className={styles.coordonner}>
-          <label htmlFor='cashierName'>Createur :</label>
-          <input
-            required
-            disabled
-            placeholder='Nom createur'
-            type='text'
-            name='cashierName'
-            id='cashierName'
-            value={cashierName}
-            onChange={(event) => setCashierName(event.target.value)}
-          />
-          <label htmlFor='customerName'>Bénéficiaire :</label>
+          <label htmlFor='client'>Client :</label>
           <select
             required
-            name='customerName'
-            id='customerName'
+            name='client'
+            id='client'
             className={styles.select}
-            value={customerName}
-            onChange={(event) => setCustomerName(event.target.value)}
+            value={client}
+            onChange={(event) => setClient(event.target.value)}
           >
             <option value='' defaultValue hidden>
               Nom client
@@ -199,13 +194,16 @@ function InvoiceForm() {
           <tbody>
             {items.map((item, index) => (
               <InvoiceItem
-                key={item._id}
-                id={item._id}
-                name={item.name}
-                qty={item.qty}
-                price={item.price}
+                className={styles.select}
+                produitList={produitList}
+                key={index}
+                id={item.id}
+                name={item.intitule}
+                qty={item.quantite}
+                price={item.bugetVente}
                 onDeleteItem={deleteItemHandler}
-                onEdtiItem={edtiItemHandler}
+                onEditItem={editItemHandler}
+                onSetItem={setItemHandler}
               />
             ))}
           </tbody>
@@ -216,49 +214,57 @@ function InvoiceForm() {
         <div className={styles.details}>
           <div>
             <span style={{ fontWeight: 700 }}>Total HT :</span>
-            <span>{subtotal.toFixed(2)} TND</span>
+            <span>{Number(subtotal).toFixed(2)} TND</span>
           </div>
           <div>
-            <span style={{ fontWeight: 700 }}>Remise :</span>
-            <span>
-              ({discount || '0'}%){discountRate.toFixed(2)} TND
-            </span>
+            <span style={{ fontWeight: 700 }}>Timber :</span>
+            <span>{Number(timber).toFixed(3)} TND</span>
           </div>
           <div>
             <span style={{ fontWeight: 700 }}>TVA :</span>
             <span>
-              ({tax || '0'}%){taxRate.toFixed(2)} TND
+              ({tax || '0'}%) {taxRate.toFixed(2)} TND
             </span>
           </div>
           <div style={{ paddingTop: '0.5rem', borderTop: '1px solid #CCC' }}>
             <span style={{ fontWeight: 700 }}>Total TTC:</span>
             <span style={{ fontWeight: 700 }}>
-              {total % 1 === 0 ? total : total.toFixed(2)} TND
+              {total % 1 === 0 ? total : Number(total).toFixed(2)} TND
             </span>
           </div>
         </div>
       </div>
       <div>
         <div className={styles.buttonContainer}>
-          <button className={styles.button} type='submit'>
-            Revoir Facture
-          </button>
           <InvoiceModal
             isOpen={isOpen}
             setIsOpen={setIsOpen}
-            invoiceInfo={{
-              today,
-              invoiceNumber,
-              cashierName,
-              customerName,
-              subtotal,
-              taxRate,
-              discountRate,
-              total,
+            document={{
+              _id: 0,
+              intitule: 'Bon de Livrision',
+              dateDoc: today,
+              articles: items,
+              montantHT: subtotal,
+              montantTVA: tax,
+              remise: timber,
+              montantTTC: total,
+              client: {
+                _id: 0,
+                intitule: 'Khider Karawita',
+                identifiantFiscal: 'BE0123456789',
+                adresse: 'Msaken, Sousse 4070',
+              },
+              docCreateur: {
+                _id: 0,
+                label: 'Saleh El Behy',
+                identifiantFiscal: '8475-A-X-F-777',
+              },
             }}
-            items={items}
-            onAddNextInvoice={addNextInvoiceHandler}
           />
+          <button className={styles.button} type='submit'>
+            Revoir Document
+          </button>
+
           <button
             style={{ marginTop: '0.5rem' }}
             className={styles.button}
@@ -286,19 +292,19 @@ function InvoiceForm() {
               </div>
             </div>
             <div>
-              <label htmlFor='discount'>Taux remise :</label>
+              <label htmlFor='timber'>Timber :</label>
               <div className={styles.inputContainer}>
                 <input
                   type='number'
-                  name='discount'
-                  id='discount'
+                  name='timber'
+                  id='timber'
                   min='0'
-                  step='0.01'
-                  placeholder='0.0'
-                  value={discount}
-                  onChange={(event) => setDiscount(event.target.value)}
+                  step='0.1'
+                  placeholder='0.000'
+                  value={timber}
+                  onChange={(event) => setTimber(event.target.value)}
                 />
-                <span>%</span>
+                <span>D</span>
               </div>
             </div>
           </div>

@@ -107,44 +107,54 @@ function InvoiceModal(props) {
                   TOURNAGE & FRAISAGE <br /> MAOUA Salem
                 </h2>
                 <h4>Rue de l'indépendance M'Saken 4070</h4>
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                  <h4>Code TVA :</h4>
+                  <h4 style={{ fontWeight: 700, marginLeft: 5 }}>
+                    {documentDetails.docCreateur.identifiantFiscal}
+                  </h4>
+                </div>
               </div>
               <img src={LOGO} alt='logo.png' className={styles.logo} />
             </div>
-            <div>
-              <h1>
-                {documentDetails.intitule} N°{documentDetails.dopiece}
-              </h1>
-            </div>
-
+            <h1>
+              {documentDetails.intitule} N°{documentDetails.dopiece}
+            </h1>
             <div style={{ marginTop: '1.5rem' }}>
               <div className={styles.informations}>
                 <div className={styles.grid}>
-                  <span style={{ fontWeight: 700, textAlign: 'right' }}>
-                    Createur :
-                  </span>
-                  <span>{documentDetails.docCreateur.label}</span>
-                  <span style={{ fontWeight: 700, textAlign: 'right' }}>
-                    Code TVA :
-                  </span>
-                  <span>{documentDetails.docCreateur.identifiantFiscal}</span>
-                  <span style={{ fontWeight: 700, textAlign: 'right' }}>
-                    Date :
-                  </span>
-                  <span>{documentDetails.dateDoc}</span>
+                  <div>
+                    <span style={{ fontWeight: 700, textAlign: 'left' }}>
+                      Client :
+                    </span>
+                    <span>{documentDetails.client.intitule}</span>
+                  </div>
+                  <div>
+                    <span style={{ fontWeight: 700, textAlign: 'left' }}>
+                      Code TVA :
+                    </span>
+                    <span>{documentDetails.client.identifiantFiscal}</span>
+                  </div>
                 </div>
+
                 <div className={styles.grid}>
-                  <span style={{ fontWeight: 700, textAlign: 'right' }}>
-                    A l'ordre de{' '}
-                  </span>
-                  <span>{documentDetails.client.intitule}</span>
-                  <span style={{ fontWeight: 700, textAlign: 'right' }}>
-                    Code TVA :
-                  </span>
-                  <span>{documentDetails.client.identifiantFiscal}</span>
-                  <span style={{ fontWeight: 700, textAlign: 'right' }}>
-                    Adresse :
-                  </span>
-                  <span>{documentDetails.client.adresse}</span>
+                  <div>
+                    <span
+                      style={{
+                        fontWeight: 700,
+                        textAlign: 'left',
+                        width: 'fit-content',
+                      }}
+                    >
+                      Date :
+                    </span>
+                    <span>{documentDetails.dateDoc}</span>
+                  </div>
+                  <div>
+                    <span style={{ fontWeight: 700, textAlign: 'left' }}>
+                      Adresse :
+                    </span>
+                    <span>{documentDetails.client.adresse}</span>
+                  </div>
                 </div>
               </div>
 
@@ -171,16 +181,10 @@ function InvoiceModal(props) {
                       <td style={{ width: '100%' }}>{item.intitule}</td>
 
                       <td style={{ minWidth: 90, textAlign: 'right' }}>
-                        {Number(
-                          item.bugetVente.split('TND')[0].replace(' ', '')
-                        ).toFixed(2)}
+                        {Number(item.bugetVente).toFixed(2)}
                       </td>
                       <td style={{ minWidth: 100, textAlign: 'right' }}>
-                        {(
-                          Number(
-                            item.bugetVente.split('TND')[0].replace(' ', '')
-                          ) * item.quantite
-                        ).toFixed(2)}
+                        {(Number(item.bugetVente) * item.quantite).toFixed(2)}
                       </td>
                     </tr>
                   ))}
@@ -191,26 +195,26 @@ function InvoiceModal(props) {
                 <div
                   style={{
                     paddingTop: '0.5rem',
-                    borderTop: '1px solid #00000010',
+                    borderTop: '1px solid #00000060',
                   }}
                 >
                   <span style={{ fontWeight: 700 }}>Total HT :</span>
                   <span>{documentDetails.montantHT.toFixed(2)}</span>
                 </div>
                 <div>
-                  <span style={{ fontWeight: 700 }}>Remise :</span>
-                  <span>{documentDetails.remise.toFixed(2)}</span>
+                  <span style={{ fontWeight: 700 }}>Timber :</span>
+                  <span>{Number(documentDetails.remise).toFixed(3)}</span>
                 </div>
                 <div>
                   <span style={{ fontWeight: 700 }}>TVA :</span>
-                  <span>{documentDetails.montantTVA.toFixed(2)}</span>
+                  <span>{documentDetails.montantTVA}%</span>
                 </div>
                 <div
                   style={{
                     paddingTop: '0.5rem',
                     paddingBottom: '0.5rem',
                     borderTopWidth: '1px',
-                    borderTop: '1px solid #00000010',
+                    borderTop: '1px solid #00000060',
                   }}
                 >
                   <span style={{ fontWeight: 700 }}>Total TTC:</span>
@@ -226,8 +230,8 @@ function InvoiceModal(props) {
                     paddingTop: '0.5rem',
                     paddingBottom: '0.5rem',
                     borderTopWidth: '1px',
-                    color: '#AAAAAA',
-                    borderTop: '1px solid #00000010',
+                    color: '#808080',
+                    borderTop: '1px solid #00000060',
                   }}
                 >
                   <span>{wordsTTC}</span>

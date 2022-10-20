@@ -1,8 +1,17 @@
-import React from 'react';
-import InvoiceField from './InvoiceField';
+import React, { useState } from 'react';
 import styles from './InvoiceItem.module.css';
 
-const InvoiceItem = ({ id, name, qty, price, onDeleteItem, onEdtiItem }) => {
+const InvoiceItem = ({
+  id,
+  className,
+  name,
+  qty,
+  price,
+  onDeleteItem,
+  onEditItem,
+  produitList,
+  onSetItem,
+}) => {
   const deleteItemHandler = () => {
     onDeleteItem(id);
   };
@@ -10,41 +19,54 @@ const InvoiceItem = ({ id, name, qty, price, onDeleteItem, onEdtiItem }) => {
   return (
     <tr>
       <td>
-        <InvoiceField
-          onEditItem={(event) => onEdtiItem(event)}
-          cellData={{
-            placeholder: 'Item name',
-            type: 'text',
-            name: 'name',
-            id: id,
-            value: name,
+        <select
+          className={className}
+          id={id}
+          value={name}
+          type='text'
+          placeholder='Item name'
+          name='intitule'
+          onChange={(e) => {
+            onEditItem(e);
+            onSetItem(
+              e,
+              produitList[e.target.value].quantite,
+              produitList[e.target.value].bugetVente
+            );
           }}
+        >
+          {produitList
+            ? produitList.map((item, index) => (
+                <option value={item._id} key={index}>
+                  {item.intitule}
+                </option>
+              ))
+            : ''}
+        </select>
+      </td>
+      <td>
+        <input
+          onChange={(event) => onEditItem(event)}
+          value={qty}
+          name='quantite'
+          type='number'
+          min='1'
+          id={id}
         />
       </td>
       <td>
-        <InvoiceField
-          onEditItem={(event) => onEdtiItem(event)}
-          cellData={{
-            type: 'number',
-            min: '1',
-            name: 'qty',
-            id: id,
-            value: qty,
+        <input
+          style={{ textAlign: 'right' }}
+          onChange={(event) => {
+            console.log(event);
+            onEditItem(event);
           }}
-        />
-      </td>
-      <td>
-        <InvoiceField
-          onEditItem={(event) => onEdtiItem(event)}
-          cellData={{
-            className: 'text-right',
-            type: 'number',
-            min: '0.01',
-            step: '0.01',
-            name: 'price',
-            id: id,
-            value: price,
-          }}
+          value={price}
+          name='bugetVente'
+          type='number'
+          min='0.01'
+          step='0.01'
+          id={id}
         />
       </td>
       <td

@@ -8,7 +8,6 @@ function PresistLogin() {
   const [isLoading, setIsLoading] = useState(true);
   const refresh = useRefreshToken();
   const { auth } = useAuth();
-
   useEffect(() => {
     const verfiyRefreshToken = async () => {
       try {
