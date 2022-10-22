@@ -124,7 +124,13 @@ function InvoiceModal(props) {
                 <div className={styles.grid}>
                   <div>
                     <span style={{ fontWeight: 700, textAlign: 'left' }}>
-                      Client :
+                      Code Client :
+                    </span>
+                    <span>{documentDetails.client._id}</span>
+                  </div>
+                  <div>
+                    <span style={{ fontWeight: 700, textAlign: 'left' }}>
+                      Nom Client :
                     </span>
                     <span>{documentDetails.client.intitule}</span>
                   </div>
@@ -203,11 +209,11 @@ function InvoiceModal(props) {
                 </div>
                 <div>
                   <span style={{ fontWeight: 700 }}>Timber :</span>
-                  <span>{Number(documentDetails.remise).toFixed(3)}</span>
+                  <span>{Number(documentDetails.timber).toFixed(3)}</span>
                 </div>
                 <div>
                   <span style={{ fontWeight: 700 }}>TVA :</span>
-                  <span>{documentDetails.montantTVA}%</span>
+                  <span>{documentDetails.TVA}%</span>
                 </div>
                 <div
                   style={{
@@ -217,7 +223,7 @@ function InvoiceModal(props) {
                     borderTop: '1px solid #00000060',
                   }}
                 >
-                  <span style={{ fontWeight: 700 }}>Total TTC:</span>
+                  <span style={{ fontWeight: 700 }}>Total TTC :</span>
                   <span style={{ fontWeight: 700 }}>
                     {documentDetails.montantTTC % 1 === 0
                       ? documentDetails.montantTTC
@@ -235,6 +241,11 @@ function InvoiceModal(props) {
                   }}
                 >
                   <span>{wordsTTC}</span>
+                </div>
+                <div>
+                  <div className={styles.signature}>
+                    <span>Signature</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -255,7 +266,7 @@ function InvoiceModal(props) {
                   d='M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4'
                 />
               </svg>
-              <span>Download</span>
+              <span>Télecharger</span>
             </button>
             <button onClick={addNextInvoiceHandler}>
               <svg
@@ -272,7 +283,7 @@ function InvoiceModal(props) {
                   d='M13 5l7 7-7 7M5 5l7 7-7 7'
                 />
               </svg>
-              <span>Next</span>
+              <span>Validé</span>
             </button>
           </div>
         </div>

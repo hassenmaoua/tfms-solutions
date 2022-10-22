@@ -40,7 +40,7 @@ function BodyList(props) {
             <span>Buget Vente</span>
           </div>
           <div style={{ width: '2%' }}>
-            <span>Qnt</span>
+            <span>Qté</span>
           </div>
           <div style={{ width: '15%' }}>
             <span>Actions</span>

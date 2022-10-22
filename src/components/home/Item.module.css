@@ -2,13 +2,36 @@
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   object-fit: cover;
+}
+
+.container h1,
+.container span {
+  color: white;
+  width: 100%;
+  padding: 0 10px;
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(1px);
+}
+
+.container h1 {
+  font-size: 30px;
+  padding-top: 10px;
+}
+.container span {
+  font-size: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
 }
 
 .container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  position: absolute;
+  z-index: -1;
 }

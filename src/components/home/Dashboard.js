@@ -1,8 +1,8 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import styles from './Dashboard.module.css';
 import { data } from './CarouselData';
 import Item from './Item';
-import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation, Autoplay, Scrollbar } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -23,7 +23,7 @@ function Dashboard() {
         navigation
         loop={true}
         autoplay={{
-          delay: 1000,
+          delay: 4000,
         }}
         pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}
@@ -36,7 +36,7 @@ function Dashboard() {
           ? data.map((item, index) => {
               return (
                 <SwiperSlide className={styles.swiperSlide} key={index}>
-                  <Item image={item.filename} />
+                  <Item item={item} />
                 </SwiperSlide>
               );
             })

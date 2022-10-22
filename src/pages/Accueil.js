@@ -7,8 +7,10 @@ import ModuleNavigation from '../components/home/ModuleNavigation';
 function Accueil() {
   return (
     <Layout>
-      <Dashboard />
-      <ModuleNavigation />
+      <div style={{ display: 'flex' }}>
+        <ModuleNavigation />
+        <Dashboard />
+      </div>
     </Layout>
   );
 }

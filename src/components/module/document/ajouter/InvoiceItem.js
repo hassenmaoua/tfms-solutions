@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import styles from './InvoiceItem.module.css';
 
 const InvoiceItem = ({
@@ -15,7 +14,6 @@ const InvoiceItem = ({
   const deleteItemHandler = () => {
     onDeleteItem(id);
   };
-
   return (
     <tr>
       <td>
@@ -23,21 +21,24 @@ const InvoiceItem = ({
           className={className}
           id={id}
           value={name}
-          type='text'
           placeholder='Item name'
           name='intitule'
+          defaultValue=''
           onChange={(e) => {
-            onEditItem(e);
             onSetItem(
               e,
+              produitList[e.target.value].intitule,
               produitList[e.target.value].quantite,
               produitList[e.target.value].bugetVente
             );
           }}
         >
+          <option value='' hidden disabled>
+            Select Item
+          </option>
           {produitList
             ? produitList.map((item, index) => (
-                <option value={item._id} key={index}>
+                <option value={index} key={index}>
                   {item.intitule}
                 </option>
               ))
@@ -58,14 +59,13 @@ const InvoiceItem = ({
         <input
           style={{ textAlign: 'right' }}
           onChange={(event) => {
-            console.log(event);
             onEditItem(event);
           }}
           value={price}
           name='bugetVente'
           type='number'
-          min='0.01'
-          step='0.01'
+          min='1'
+          step='0.1'
           id={id}
         />
       </td>

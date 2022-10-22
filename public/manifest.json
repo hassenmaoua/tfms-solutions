@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "TFMS",
+  "name": "TFMS Solutions",
+  "description": "Site Web Tournage & Fraisage Maoua Salem Solutions",
   "icons": [
     {
       "src": "favicon.ico",
