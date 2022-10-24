@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { uid } from 'uid';
 import { useNavigate } from 'react-router-dom';
 import InvoiceItem from './InvoiceItem';
-import InvoiceModal from '../InvoiceModal';
 import useAxiosPrivate from '../../../../hooks/useAxiosPrivate';
 import styles from './InvoiceForm.module.css';
 import Spinner from '../../../layout/Spinner';
+import { Select, InputNumber } from 'antd';
+
+const { Option } = Select;
 
 function padTo2Digits(num) {
   return num.toString().padStart(2, '0');
@@ -76,14 +78,13 @@ function InvoiceForm() {
     fetchArticles();
   }, [axiosPrivate]);
 
-  const [isOpen, setIsOpen] = useState(false);
   const [timber, setTimber] = useState('0.600');
   const [tax, setTax] = useState('19');
   const [TVA, setTVA] = useState('');
   const [TTC, setTTC] = useState('');
   const [HT, setHT] = useState('');
   const [documentNumber, setDocumentNumber] = useState(1);
-  const [client, setClient] = useState('');
+  const [client, setClient] = useState(null);
   const [items, setItems] = useState([
     {
       id: uid(6),
@@ -95,26 +96,27 @@ function InvoiceForm() {
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    if (client) {
+      const document = {
+        intitule: 'Bon de Livraison',
+        dopiece: documentNumber,
+        dateDoc: today,
+        articles: items,
+        montantHT: HT,
+        montantTVA: TVA,
+        TVA: tax,
+        timber: timber,
+        montantTTC: TTC,
+        client: clientList[client],
+      };
 
-    const document = {
-      intitule: 'Bon de Livraison',
-      dopiece: documentNumber,
-      dateDoc: today,
-      articles: items,
-      montantHT: HT,
-      montantTVA: TVA,
-      TVA: tax,
-      timber: timber,
-      montantTTC: TTC,
-      client: clientList[client],
-    };
-
-    try {
-      const respone = await axiosPrivate.post('/document', document);
-      console.log(respone?.data);
-      navigate(-1);
-    } catch (err) {
-      console.log(err.respone);
+      try {
+        const respone = await axiosPrivate.post('/document', document);
+        console.log(respone?.data);
+        navigate(-1);
+      } catch (err) {
+        console.log(err.respone);
+      }
     }
   };
 
@@ -136,37 +138,36 @@ function InvoiceForm() {
     setItems((prevItem) => prevItem.filter((item) => item.id !== id));
   };
 
-  const editItemHandler = (event) => {
-    const editedItem = {
-      id: event.target.id,
-      name: event.target.name,
-      value: event.target.value,
-    };
-
-    const newItems = items.map((items) => {
-      for (const key in items) {
-        if (key === editedItem.name && items.id === editedItem.id) {
-          items[key] = editedItem.value;
-        }
+  const editQuantiteHandler = (value, id) => {
+    const newItems = items.map((item) => {
+      if (item.id === id) {
+        item.quantite = value;
       }
-      return items;
+
+      return item;
     });
 
     setItems(newItems);
   };
 
-  const setItemHandler = (event, intitule, quantite, bugetVente) => {
-    const editedItem = {
-      id: event.target.id,
-      name: event.target.name,
-      value: event.target.value,
-    };
-
+  const editPrixHandler = (value, id) => {
     const newItems = items.map((item) => {
-      if (item.id === editedItem.id) {
-        item.intitule = intitule;
-        item.quantite = quantite;
-        item.bugetVente = bugetVente;
+      if (item.id === id) {
+        item.bugetVente = value;
+      }
+
+      return item;
+    });
+
+    setItems(newItems);
+  };
+
+  const setItemHandler = (id, article) => {
+    const newItems = items.map((item) => {
+      if (item.id === id) {
+        item.intitule = article.intitule;
+        item.quantite = article.quantite;
+        item.bugetVente = article.bugetVente;
       }
 
       return item;
@@ -207,53 +208,54 @@ function InvoiceForm() {
               <label style={{ fontWeight: 700 }} htmlFor='documentNumber'>
                 N° Document :
               </label>
-              <input
+              <InputNumber
                 required
-                style={{ maxWidth: 130 }}
-                type='number'
+                style={{ maxWidth: 100 }}
                 name='documentNumber'
                 id='documentNumber'
                 min='1'
                 step='1'
                 value={documentNumber}
-                onChange={(event) => setDocumentNumber(event.target.value)}
+                onChange={(value) => setDocumentNumber(value)}
               />
             </div>
           </div>
           <h1 style={{ fontSize: '1.7rem' }}>Bon de Livraison</h1>
           <div className={styles.coordonner}>
             <label htmlFor='client'>Client</label>
-            <select
-              required
-              name='client'
-              id='client'
-              className={styles.select}
-              value={client}
-              onChange={(event) => {
-                setClient(event.target.value);
+            <Select
+              style={{
+                width: 260,
               }}
+              showSearch
+              placeholder='Choisir un client'
+              optionFilterProp='children'
+              value={client}
+              onChange={(value) => {
+                setClient(value);
+              }}
+              filterOption={(input, option) =>
+                option.children.toLowerCase().includes(input.toLowerCase())
+              }
             >
               {clientList.length ? (
                 clientList.map((item, index) => {
                   return (
-                    <option key={index} value={index}>
+                    <Option key={index} value={index}>
                       {item.intitule}
-                    </option>
+                    </Option>
                   );
                 })
               ) : (
-                <option value=''>Aucun client</option>
+                <Option value=''>Aucun Client</Option>
               )}
-              <option value='' hidden disabled>
-                Select client
-              </option>
-            </select>
+            </Select>
           </div>
           <table className={styles.table}>
             <thead>
               <tr>
-                <th style={{ width: '60%' }}>Designation</th>
-                <th style={{ width: '10%', minWidth: 60 }}>Qté</th>
+                <th style={{ width: '58%' }}>Designation</th>
+                <th style={{ width: '12%', minWidth: 80 }}>Qté</th>
                 <th
                   style={{ width: '20%', textAlign: 'center', minWidth: 120 }}
                 >
@@ -268,26 +270,24 @@ function InvoiceForm() {
               {client ? (
                 items.map((item, index) => (
                   <InvoiceItem
-                    className={styles.select}
-                    produitList={articleList}
                     key={index}
-                    id={item.id}
-                    name={item.index}
-                    qty={item.quantite}
-                    price={item.bugetVente}
+                    produitList={articleList}
+                    article={item}
                     onDeleteItem={deleteItemHandler}
-                    onEditItem={editItemHandler}
+                    onEditQuantiteHandler={editQuantiteHandler}
+                    onEditPrixHandler={editPrixHandler}
                     onSetItem={setItemHandler}
                   />
                 ))
               ) : (
                 <tr>
-                  <td>Select Client First</td>
+                  <td>Selectionner un client</td>
                 </tr>
               )}
             </tbody>
           </table>
           <button
+            disabled={!client}
             className={styles.addButton}
             onClick={(e) => addItemHandler(e)}
           >
@@ -296,7 +296,12 @@ function InvoiceForm() {
           <div className={styles.details}>
             <div>
               <span style={{ fontWeight: 700 }}>Total HT :</span>
-              <span>{Number(subtotal).toFixed(2)} TND</span>
+              <span>
+                {Number(subtotal)
+                  .toFixed(2)
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}{' '}
+                TND
+              </span>
             </div>
             <div>
               <span style={{ fontWeight: 700 }}>Timber :</span>
@@ -305,51 +310,33 @@ function InvoiceForm() {
             <div>
               <span style={{ fontWeight: 700 }}>TVA :</span>
               <span>
-                ({tax || '0'}%) {taxRate.toFixed(2)} TND
+                ({tax || '0'}%){' '}
+                {taxRate.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ' ')} TND
               </span>
             </div>
             <div style={{ paddingTop: '0.5rem', borderTop: '1px solid #CCC' }}>
               <span style={{ fontWeight: 700 }}>Total TTC:</span>
               <span style={{ fontWeight: 700 }}>
-                {total % 1 === 0 ? total : Number(total).toFixed(2)} TND
+                {total % 1 === 0
+                  ? total
+                  : Number(total)
+                      .toFixed(2)
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}{' '}
+                TND
               </span>
             </div>
           </div>
         </div>
         <div>
           <div className={styles.buttonContainer}>
-            <InvoiceModal
-              isOpen={isOpen}
-              setIsOpen={setIsOpen}
-              document={{
-                _id: 0,
-                intitule: 'Bon de Livrision',
-                dateDoc: today,
-                articles: items,
-                montantHT: subtotal,
-                montantTVA: tax,
-                remise: timber,
-                montantTTC: total,
-                client: {
-                  _id: 0,
-                  intitule: 'Khider Karawita',
-                  identifiantFiscal: 'BE0123456789',
-                  adresse: 'Msaken, Sousse 4070',
-                },
-                docCreateur: {
-                  _id: 0,
-                  label: 'Saleh El Behy',
-                  identifiantFiscal: '8475-A-X-F-777',
-                },
-              }}
-            />
-            <button className={styles.button} type='submit'>
+            <button disabled={!client} className={styles.button} type='submit'>
               Validate
             </button>
 
             <button
               style={{ marginTop: '0.5rem' }}
               className={styles.cancel}
+              type='reset'
               onClick={() => {
                 navigate(-1);
               }}
@@ -359,35 +346,31 @@ function InvoiceForm() {
             <div className={styles.variables}>
               <div>
                 <label htmlFor='tax'>Taux de TVA :</label>
-                <div className={styles.inputContainer}>
-                  <input
-                    type='number'
-                    name='tax'
-                    id='tax'
-                    min='0'
-                    step='1'
-                    placeholder='0'
-                    value={tax}
-                    onChange={(event) => setTax(event.target.value)}
-                  />
-                  <span>%</span>
-                </div>
+
+                <InputNumber
+                  name='tax'
+                  id='tax'
+                  min='0'
+                  step='1'
+                  placeholder='0'
+                  addonAfter='%'
+                  value={tax}
+                  onChange={(value) => setTax(value)}
+                />
               </div>
               <div>
                 <label htmlFor='timber'>Timber :</label>
-                <div className={styles.inputContainer}>
-                  <input
-                    type='number'
-                    name='timber'
-                    id='timber'
-                    min='0'
-                    step='0.1'
-                    placeholder='0.000'
-                    value={timber}
-                    onChange={(event) => setTimber(event.target.value)}
-                  />
-                  <span>D</span>
-                </div>
+
+                <InputNumber
+                  name='timber'
+                  id='timber'
+                  min='0'
+                  step='0.1'
+                  placeholder='0.000'
+                  addonAfter='TND'
+                  value={timber}
+                  onChange={(value) => setTimber(value)}
+                />
               </div>
             </div>
           </div>

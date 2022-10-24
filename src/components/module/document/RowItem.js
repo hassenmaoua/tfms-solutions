@@ -30,7 +30,7 @@ function RowItem(props) {
         </span>
       </div>
       <div style={{ width: '20%' }} className={styles.item}>
-        {item.montantTTC.toFixed(2)} TND
+        {item.montantTTC.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ' ')} TND
       </div>
 
       <div

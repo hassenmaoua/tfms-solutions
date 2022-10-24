@@ -180,17 +180,21 @@ function InvoiceModal(props) {
                 </thead>
                 <tbody>
                   {documentDetails.articles.map((item) => (
-                    <tr key={item._id}>
+                    <tr key={item.id}>
                       <td style={{ minWidth: 40, textAlign: 'left' }}>
                         {item.quantite}
                       </td>
                       <td style={{ width: '100%' }}>{item.intitule}</td>
 
                       <td style={{ minWidth: 90, textAlign: 'right' }}>
-                        {Number(item.bugetVente).toFixed(2)}
+                        {Number(item.bugetVente)
+                          .toFixed(2)
+                          .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
                       </td>
                       <td style={{ minWidth: 100, textAlign: 'right' }}>
-                        {(Number(item.bugetVente) * item.quantite).toFixed(2)}
+                        {(Number(item.bugetVente) * item.quantite)
+                          .toFixed(2)
+                          .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
                       </td>
                     </tr>
                   ))}
@@ -205,7 +209,11 @@ function InvoiceModal(props) {
                   }}
                 >
                   <span style={{ fontWeight: 700 }}>Total HT :</span>
-                  <span>{documentDetails.montantHT.toFixed(2)}</span>
+                  <span>
+                    {documentDetails.montantHT
+                      .toFixed(2)
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
+                  </span>
                 </div>
                 <div>
                   <span style={{ fontWeight: 700 }}>Timber :</span>
@@ -227,7 +235,9 @@ function InvoiceModal(props) {
                   <span style={{ fontWeight: 700 }}>
                     {documentDetails.montantTTC % 1 === 0
                       ? documentDetails.montantTTC
-                      : documentDetails.montantTTC.toFixed(2)}{' '}
+                      : documentDetails.montantTTC
+                          .toFixed(2)
+                          .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}{' '}
                     TND
                   </span>
                 </div>

@@ -5,6 +5,34 @@ function BodyList(props) {
   const response = props.response;
   const data = response.data;
 
+  const filteredData = data.filter((document) => {
+    if (
+      props.filterRadio.toLowerCase() === 'bon de livraison' &&
+      document.intitule.toLowerCase() === 'bon de livraison'
+    ) {
+      if (props.filterInput === '') {
+        return document;
+      } else {
+        return document.dopiece.toLowerCase().includes(props.filterInput);
+      }
+    } else if (
+      props.filterRadio.toLowerCase() === 'facture' &&
+      document.intitule.toLowerCase() === 'facture'
+    ) {
+      if (props.filterInput === '') {
+        return document;
+      } else {
+        return document.intitule.toLowerCase().includes(props.filterInput);
+      }
+    } else if (props.filterRadio === 'tout') {
+      if (props.filterInput === '') {
+        return document;
+      } else {
+        return document.intitule.toLowerCase().includes(props.filterInput);
+      }
+    }
+  });
+
   if (response.status)
     return (
       <div className={styles.container}>
@@ -29,8 +57,8 @@ function BodyList(props) {
           </div>
         </div>
 
-        {data.length ? (
-          data.map((item, index) => {
+        {filteredData.length ? (
+          filteredData.map((item, index) => {
             return (
               <RowItem
                 key={index}

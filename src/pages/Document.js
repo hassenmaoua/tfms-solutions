@@ -50,10 +50,17 @@ function Facture() {
     fetchDocuments();
   }, [axiosPrivate]);
 
+  const [filter, setFilter] = useState('tout');
+  let filterHandler = (e) => {
+    setFilter(e.target.value);
+  };
+
   return (
     <Layout>
       <InvoiceModal isOpen={isOpen} setIsOpen={setIsOpen} document={document} />
       <Header
+        onFilter={filterHandler}
+        filter={filter}
         onButtonClick={() => {
           navigate('/document/ajouter', { replace: false });
         }}
@@ -63,6 +70,8 @@ function Facture() {
           setDocument={setDocument}
           setIsOpen={setIsOpen}
           response={response}
+          filterRadio={filter}
+          filterInput=''
         />
       ) : (
         <Spinner />

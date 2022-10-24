@@ -102,6 +102,7 @@ function NewClientForm(props) {
           >
             <input
               required
+              placeholder='0000-X-X-X-000'
               type='text'
               maxLength={25}
               ref={identifiantInputRef}

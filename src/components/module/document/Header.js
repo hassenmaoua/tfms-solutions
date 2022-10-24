@@ -6,11 +6,8 @@ import IconButton from '../../ui/buttons/IconButton';
 import SearchQuery from '../../ui/inputs/SearchQuery';
 
 function Header(props) {
-  const [state, setState] = useState('tout');
-
-  function onStateChanged(event) {
-    setState(event.currentTarget.value);
-  }
+  const intitule = props.filter;
+  const onIntituleChanged = props.onFilter;
 
   return (
     <div className={styles.container}>
@@ -23,26 +20,26 @@ function Header(props) {
             type='radio'
             name='type'
             value='tout'
-            checked={state === 'tout'}
-            onChange={onStateChanged}
+            checked={intitule === 'tout'}
+            onChange={onIntituleChanged}
           />{' '}
           Tout
           <input
             type='radio'
-            value='nouveau'
+            value='Bon de Livraison'
             name='type'
-            checked={state === 'nouveau'}
-            onChange={onStateChanged}
+            checked={intitule.toLocaleLowerCase() === 'bon de livraison'}
+            onChange={onIntituleChanged}
           />{' '}
-          Nouveau
+          Bon de Livraison
           <input
             type='radio'
-            value='validé'
+            value='Facture'
             name='type'
-            checked={state === 'validé'}
-            onChange={onStateChanged}
+            checked={intitule.toLocaleLowerCase() === 'facture'}
+            onChange={onIntituleChanged}
           />{' '}
-          Validé
+          Facture
         </div>
       </div>
       <div>
