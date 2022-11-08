@@ -8,7 +8,7 @@ import Document from './pages/Document';
 import Root from './pages/Root';
 import DetailsActivite from './pages/DetailsActivite';
 import ModifierActivite from './pages/ModifierActivite';
-import DocumentForm from './pages/DocumentForm';
+import AjouterDocument from './pages/AjouterDocument';
 import NotFound from './pages/NotFound';
 import RequireAuth from './components/RequireAuth';
 import PresistLogin from './components/PresistLogin';
@@ -28,7 +28,7 @@ function App() {
           <Route path='/Activite/modifier/:id' element={<ModifierActivite />} />
 
           <Route path='/document' element={<Document />} />
-          <Route path='/document/ajouter' element={<DocumentForm />} />
+          <Route path='/document/ajouter' element={<AjouterDocument />} />
 
           <Route path='/client' element={<Client />} />
         </Route>

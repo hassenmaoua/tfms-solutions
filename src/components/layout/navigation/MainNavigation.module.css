@@ -22,6 +22,9 @@
 .logo img {
   height: 60px;
 }
+.logo img:hover {
+  cursor: pointer;
+}
 
 .navWrapper {
   display: flex;

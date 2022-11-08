@@ -3,11 +3,14 @@ import { jsPDF } from 'jspdf';
 import styles from './InvoiceModal.module.css';
 import LOGO from '../../assets/images/logo.png';
 import FrenchNumbersToWords from 'french-numbers-to-words';
+import { useState } from 'react';
 
 function InvoiceModal(props) {
   const setIsOpen = props.setIsOpen;
   const isOpen = props.isOpen;
   const documentDetails = props.document;
+
+  const [action, setAction] = useState('')
 
   var wordsTTC = '';
 
@@ -293,7 +296,7 @@ function InvoiceModal(props) {
                   d='M13 5l7 7-7 7M5 5l7 7-7 7'
                 />
               </svg>
-              <span>Validé</span>
+              <span>{action}</span>
             </button>
           </div>
         </div>

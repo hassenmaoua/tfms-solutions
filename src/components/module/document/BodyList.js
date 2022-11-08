@@ -63,6 +63,7 @@ function BodyList(props) {
               <RowItem
                 key={index}
                 item={item}
+                onDelete={props.onDelete}
                 setDocument={props.setDocument}
                 setIsOpen={props.setIsOpen}
               />

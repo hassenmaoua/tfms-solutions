@@ -55,6 +55,16 @@ function Facture() {
     setFilter(e.target.value);
   };
 
+  async function deleteHandler(id) {
+    try {
+      const response = await axiosPrivate.delete('/document/' + id);
+      console.log(response?.data);
+      fetchDocuments();
+    } catch (err) {
+      console.log(err.message);
+    }
+  }
+
   return (
     <Layout>
       <InvoiceModal isOpen={isOpen} setIsOpen={setIsOpen} document={document} />
@@ -70,6 +80,7 @@ function Facture() {
           setDocument={setDocument}
           setIsOpen={setIsOpen}
           response={response}
+          onDelete={deleteHandler}
           filterRadio={filter}
           filterInput=''
         />

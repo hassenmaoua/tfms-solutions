@@ -1,19 +1,13 @@
-import styles from './InvoiceItem.module.css';
+import styles from './InvoiceForm.module.css';
 import { Select, InputNumber } from 'antd';
 const { Option } = Select;
 
-const InvoiceItem = ({
-  article,
-  onDeleteItem,
-  onEditQuantiteHandler,
-  onEditPrixHandler,
-  produitList,
-  onSetItem,
-}) => {
+function FactureItem({ document, livraisonList, onDeleteItem, onSetItem }) {
   const deleteItemHandler = () => {
-    onDeleteItem(article.id);
+    onDeleteItem(document.id);
   };
-  if (produitList)
+
+  if (livraisonList)
     return (
       <tr>
         <td>
@@ -21,21 +15,21 @@ const InvoiceItem = ({
             style={{
               width: '100%',
             }}
-            id={article.id}
+            id={document.id}
             showSearch
-            placeholder='Choisir un produit'
+            placeholder='Choisir un bon de livraison'
             optionFilterProp='children'
             onChange={(value) => {
-              onSetItem(article.id, produitList[value]);
+              onSetItem(document.id, livraisonList[value]);
             }}
             filterOption={(input, option) =>
               option.children.toLowerCase().includes(input.toLowerCase())
             }
           >
-            {produitList.map((item, index) => {
+            {livraisonList.map((item, index) => {
               return (
                 <Option key={index} value={item.index}>
-                  {item.intitule}
+                  {item.intitule} N°{item.dopiece}
                 </Option>
               );
             })}
@@ -48,32 +42,9 @@ const InvoiceItem = ({
               paddingRight: 0,
               paddingLeft: 0,
             }}
-            id={article.id}
-            min={1}
-            max={999}
-            name='quantite'
-            onChange={(value) => onEditQuantiteHandler(value, article.id)}
-            value={article.quantite}
-          />
-        </td>
-        <td>
-          <InputNumber
-            style={{
-              width: '100%',
-              align: 'right',
-            }}
-            id={article.id}
-            min={1}
-            max={9999999}
-            step={0.1}
-            onChange={(value) => {
-              onEditPrixHandler(value, article.id);
-            }}
-            value={article.bugetVente}
-            name='bugetVente'
-            formatter={(value) =>
-              `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
-            }
+            id={document.id}
+            value={document.montantHT}
+            disabled
           />
         </td>
         <td
@@ -102,6 +73,6 @@ const InvoiceItem = ({
         </td>
       </tr>
     );
-};
+}
 
-export default InvoiceItem;
+export default FactureItem;

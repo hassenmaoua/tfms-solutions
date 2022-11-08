@@ -1,10 +1,11 @@
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import style from './MainNavigation.module.css';
 import LOGO from '../../assets/images/logo_small.png';
 import Menu from './Menu';
 
 function MainNavigation() {
   const location = useLocation();
+  const navigate = useNavigate();
 
   const classNameFunc = ({ isActive }) =>
     ['/home', '/activite', '/client', '/document'].includes(location.pathname)
@@ -16,7 +17,13 @@ function MainNavigation() {
     <header className={style.headerWrapper}>
       <Menu />
       <div className={style.logo}>
-        <img src={LOGO} alt='Logo' />
+        <img
+          src={LOGO}
+          alt='Logo'
+          onClick={() => {
+            navigate('/home', { replace: true });
+          }}
+        />
       </div>
 
       <nav className={style.navWrapper}>

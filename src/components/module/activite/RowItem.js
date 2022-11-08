@@ -6,7 +6,7 @@ import State from '../../ui/State';
 
 function RowItem(props) {
   const item = props.item;
-  const onDelete = props.onDelete;
+  const deleteHandler = props.onDelete;
 
   return (
     <div className={styles.container}>
@@ -51,8 +51,8 @@ function RowItem(props) {
           style={{ color: '#F32013' }}
           className={styles.icon}
           onClick={() => {
-            onDelete(item._id);
-            console.log('Delete Button');
+            deleteHandler(item._id);
+            console.log(`Deleted Produit ${item._id}`);
           }}
         />
       </div>
