@@ -12,7 +12,7 @@
 
 ## About The Project
 
-The project is a enterprise management website developed specifically to manage manufacturing, invoices and customers.
+The project is a web application designed for enterprise management. It focuses on managing manufacturing activities, including handling invoices and clients. The website provides a user-friendly interface and features that streamline the process of managing manufacturing operations within the enterprise. It aims to enhance efficiency, organization, and coordination in handling various manufacturing tasks, such as tracking invoices, managing customer information, and overseeing manufacturing activities.
 
 ### Build with
 
@@ -23,7 +23,6 @@ The project is a enterprise management website developed specifically to manage 
 ### Host Platform
 
 [<img alt="Vercel" src="https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white">](https://vercel.com/dashboard)
-[<img alt="Heroku" src="https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white">](https://dashboard.heroku.com/)
 
 ### Development Environment
 
@@ -63,27 +62,19 @@ npm install
 
 ## Modules
 
-> `antd` : [Ant Design](https://ant.design/) An enterprise-class UI design language and React UI library with a set of high-quality React components, one of best React UI library for enterprises.
+> `tailwindcss` : [Tailwindcss](https://tailwindcss.com/) is enterprise-class UI design language and React UI library with a set of high-quality React components, one of best React UI library for enterprises.
 
 > `axios` : [Axios](https://axios-http.com/docs/intro) is a promised-based HTTP client for JavaScript. It has the ability to make HTTP requests from the browser and handle the transformation of request and response data.
 
-> `jquery` : [jQuery](https://jquery.com/) is a JavaScript library designed to simplify HTML DOM tree traversal and manipulation
-
-> `react-dom` : [ReactDOM](https://reactjs.org/docs/react-dom.html) is a package that provides DOM specific methods that can be used at the top level of a web app to enable an efficient way of managing DOM elements of the web page.
-
-> `swiper` : [Swiper](https://swiperjs.com/react) is the most modern free mobile touch slider with hardware accelerated transitions and amazing native behavior.
+> `react-query` : [jQuery](https://jquery.com/) is a JavaScript library designed to simplify HTML DOM tree traversal and manipulation
 
 ## How To Use
 
 You may run this simple steps after visit [TFMS Solutions](https://tfms-solutions.vercel.app/) or use local running.
 
-1. When the website is opened, the user is required to authenticate.
+1. When the website is opened, the user is required to authenticate. You can register and then authenticate to create entities within application to see demonstration.
 
-For now Sign Up isn't available, to see demonstration :
-email: `user`
-password: `user`
-
-2. The user would have access to the manifactures products for which he is responsible, to customers and invoices of his company.
+2. The user would have access to the manifactures activities for which he is responsible, to customers and invoices of his company.
 
 3. It is possible to change, add and modify products, clients and invoices.
 

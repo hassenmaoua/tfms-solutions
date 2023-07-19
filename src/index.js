@@ -1,17 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import './assets/styles/tailwind.css';
+import AppRoutes from './app/routes/AppRoutes';
+import { AuthProvider } from './app/modules/auth/AuthProvider';
+import { setupAxios } from './app/modules/auth/core/AuthHelpers';
+import axios from 'axios';
+setupAxios(axios);
 
-import { AuthProvider } from './context/AuthProvider';
-
-import './index.css';
-import App from './App';
-
+const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
-  <BrowserRouter>
-    <AuthProvider>
-      <App />
-    </AuthProvider>
-  </BrowserRouter>
+  <React.StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <AppRoutes />
+      </AuthProvider>
+    </QueryClientProvider>
+  </React.StrictMode>
 );
