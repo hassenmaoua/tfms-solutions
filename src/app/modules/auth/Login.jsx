@@ -33,7 +33,9 @@ const Login = () => {
       setCurrentUser(data.user);
     } catch (error) {
       console.error(error);
-      ErrorAlert('Failed to Login', error.message);
+      if (error.response.data.message) {
+        ErrorAlert('Failed to Login', error.response.data.message);
+      } else ErrorAlert('Failed to Login', error.message);
       saveAuth(undefined);
     }
   };

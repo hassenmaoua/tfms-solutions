@@ -8,11 +8,35 @@
   <a href="#license">License</a>
 </p>
 
-![picture](picture.png)
-
 ## About The Project
 
 The project is a web application designed for enterprise management. It focuses on managing manufacturing activities, including handling invoices and clients. The website provides a user-friendly interface and features that streamline the process of managing manufacturing operations within the enterprise. It aims to enhance efficiency, organization, and coordination in handling various manufacturing tasks, such as tracking invoices, managing customer information, and overseeing manufacturing activities.
+
+## Screenshots
+
+### Home
+
+![Home](public/media/screenshots/home.png)
+
+_Description: This is the landing page after login where users can see a statics of data and access various modules._
+
+### Activities
+
+![Activities](public/media/screenshots/activities.png)
+
+_Description: This section allows users to manage and track manufacturing activities, providing insights and acitivty's related informations._
+
+### Clients
+
+![Clients](public/media/screenshots/clients.png)
+
+_Description: In the Clients module, users can add, edit, and manage client information, as well as track client interactions._
+
+### Documents
+
+![Documents](public/media/screenshots/documents.png)
+
+_Description: The Documents section enables users to store and organize important files and documents related to manufacturing and clients._
 
 ### Build with
 
@@ -34,7 +58,7 @@ The project is a web application designed for enterprise management. It focuses 
 
 ### Link to API repositories
 
-> [github.com/hassenmaoua/LMW-API](https://github.com/hassenmaoua/LMW-API)
+> [github.com/hassenmaoua/tfms-API](https://github.com/hassenmaoua/tfms-API)
 
 ## Installation
 
@@ -60,13 +84,31 @@ cd tfms-solutions
 npm install
 ```
 
+- Configure the database settings inside `.env`
+
+```js
+PORT = 4000;
+REACT_APP_API_URL = 'http://localhost:3000/api';
+REACT_APP_API_PUBLIC_URL = 'http://localhost:3000';
+```
+
+- Run developement server
+
+```bash
+npm start
+```
+
 ## Modules
 
 > `tailwindcss` : [Tailwindcss](https://tailwindcss.com/) is enterprise-class UI design language and React UI library with a set of high-quality React components, one of best React UI library for enterprises.
 
+> `apexcharts` : [ApexCharts](https://apexcharts.com/docs/react-charts/) providing an easy way to create interactive and visually appealing charts in React applications using declarative syntax.
+
 > `axios` : [Axios](https://axios-http.com/docs/intro) is a promised-based HTTP client for JavaScript. It has the ability to make HTTP requests from the browser and handle the transformation of request and response data.
 
-> `react-query` : [jQuery](https://jquery.com/) is a JavaScript library designed to simplify HTML DOM tree traversal and manipulation
+> `react-query` : [React Query](https://tanstack.com/query/v3/docs/react/overview) is a powerful library for managing and caching asynchronous data in React applications. It simplifies the process of fetching, updating, and synchronizing data with server APIs, providing a seamless and efficient data-fetching experience.
+
+> `formik` : [Formik](https://formik.org/docs/overview) is a popular library for managing forms in React applications, simplifying form state management, validation, and submission handling.
 
 ## How To Use
 
