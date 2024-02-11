@@ -12,6 +12,8 @@
     "axios": "^1.4.0",
     "clsx": "^1.2.1",
     "formik": "^2.4.2",
+    "html-to-image": "^1.11.11",
+    "jspdf": "^2.5.1",
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.0",
     "react-dom": "^18.2.0",
@@ -22,6 +24,7 @@
     "sweetalert2": "^11.7.12",
     "tailwind-styled-components": "^2.2.0",
     "twind": "^0.16.19",
+    "uid": "^2.0.2",
     "web-vitals": "^2.1.4",
     "yup": "^1.2.0"
   },

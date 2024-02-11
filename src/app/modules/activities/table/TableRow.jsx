@@ -46,7 +46,7 @@ const TableRow = ({ activity, onClick }) => {
                 alt='Avatar'
               />
             ) : (
-              <div className='relative inline-flex items-center justify-center w-8 h-8 rounded-full mr-2 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600'>
+              <div className='relative inline-flex items-center justify-center w-8 h-8 rounded-full mr-2 overflow-hidden bg-gray-100 dark:bg-gray-600'>
                 <span className='font-medium text-xs text-gray-600 dark:text-gray-300'>
                   {activity.client.intitule.split(' ').map((word) => {
                     return word[0].toUpperCase();

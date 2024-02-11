@@ -7,7 +7,6 @@ import { getActivityById } from '../../core/requests';
 import CreateActivityForm from './CreateActivityForm';
 import { isNotEmpty } from '../../../../../assets/helpers';
 import {
-  AlertDialog,
   DiscardDialog,
 } from '../../../../../assets/helpers/alertDialogs';
 

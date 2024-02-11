@@ -24,7 +24,7 @@ _Description: This is the landing page after login where users can see a statics
 
 ![Activities](public/media/screenshots/activities.png)
 
-_Description: This section allows users to manage and track manufacturing activities, providing insights and acitivty's related informations._
+_Description: This section allows users to manage and track manufacturing activities, providing insights and activity's related information's._
 
 ### Clients
 
